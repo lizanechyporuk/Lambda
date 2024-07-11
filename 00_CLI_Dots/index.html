@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <script>
+      const str = prompt("Write a string");
+
+      function convertStr(str) {
+        let result = [];
+        const combs = Math.pow(2, str.length - 1);
+
+        for (let i = 0; i < combs; i++) {
+          let comb = str[0];
+          let temp = i;
+
+          for (let j = 0; j < str.length - 1; j++) {
+            if (temp % 2 === 1) {
+              comb += ".";
+            }
+
+            comb += str[j + 1];
+            temp = Math.trunc(temp / 2);
+          }
+
+          result.push(comb);
+        }
+
+        return result;
+      }
+
+      console.log(convertStr(str));
+    </script>
+  </body>
+</html>

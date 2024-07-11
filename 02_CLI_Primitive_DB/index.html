@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Primitive DB</title>
+
+    <style>
+      body {
+        font-family: "Helvetica", sans-serif;
+        margin: 20px;
+      }
+
+      .forms--container {
+        display: flex;
+        gap: 100px;
+      }
+
+      #userForm,
+      #searchForm {
+        background: rgba(226, 129, 210, 0.2);
+        border-radius: 50px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        gap: 10px;
+      }
+
+      input {
+        padding: 8px 12px;
+      }
+
+      button {
+        border-radius: 50px;
+        font-size: 16px;
+        padding: 5px 10px;
+        background: #c9c9c7;
+        border: none;
+        width: 50%;
+        max-width: 500px;
+        align-self: center;
+
+        &:hover {
+          background: rgba(201, 201, 199, 0.5);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Primitive DB</h1>
+
+    <div class="forms--container">
+      <div id="mainForm">
+        <form id="userForm">
+          <label> Name: <input type="text" id="nameInput" size="50" /> </label>
+
+          <label>
+            Gender:
+            <select id="genderInput">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label> Age: <input type="number" id="ageInput" /> </label>
+
+          <button type="button" onclick="addUser()">Add User</button>
+        </form>
+      </div>
+
+      <div id="searchForm">
+        <label>
+          Search Name: <input type="text" id="searchInput" size="50" />
+        </label>
+
+        <button type="button" onclick="findUser()">Search</button>
+      </div>
+    </div>
+
+    <button type="button" onclick="deleteAllUsers()" style="margin-top: 20px">
+      Delete All Users
+    </button>
+
+    <script>
+      const users = [];
+
+      function addUser() {
+        const name = document.getElementById("nameInput").value.trim();
+
+        const gender = document.getElementById("genderInput").value;
+
+        const age = parseInt(
+          document.getElementById("ageInput").value.trim(),
+          10
+        );
+
+        users.push({ name, gender, age });
+
+        document.getElementById("userForm").reset();
+      }
+
+      function findUser() {
+        const name = document.getElementById("searchInput").value.trim();
+        const user = users.find(
+          (user) => user.name.toLowerCase() === name.toLowerCase()
+        );
+
+        if (user) {
+          alert(
+            `User found: Name: ${user.name}, Gender: ${user.gender}, Age: ${user.age}`
+          );
+        } else {
+          alert("User not found");
+        }
+
+        document.getElementById("searchInput").value = "";
+      }
+
+      function deleteAllUsers() {
+        users.length = 0;
+        alert("All users have been deleted.");
+      }
+    </script>
+  </body>
+</html>

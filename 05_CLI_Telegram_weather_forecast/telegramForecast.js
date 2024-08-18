@@ -1,18 +1,18 @@
-const TelegramBot = require("node-telegram-bot-api");
-const axios = require("axios");
+import TelegramBot from "node-telegram-bot-api";
+import axios from "axios";
 
-const TELEGRAM_BOT_TOKEN = "6367201733:AAEC_A5X7ih_dZxK2xf8i-RUw1TwIoWLbsQ";
-const OPENWEATHERMAP_API_KEY = "02118fc635059bfa7dafe52c1c9aa5c5";
-const CITY = "Kyiv";
+const botToken = "6367201733:AAEC_A5X7ih_dZxK2xf8i-RUw1TwIoWLbsQ";
+const weatherAPIKey = "02118fc635059bfa7dafe52c1c9aa5c5";
+const city = "Kyiv";
 
-const bot = new TelegramBot(TELEGRAM_BOT_TOKEN, { polling: true });
+const bot = new TelegramBot(botToken, { polling: true });
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
 
   bot.sendMessage(
     chatId,
-    `Welcome! Choose the forecast interval for ${CITY}:`,
+    `Welcome! Choose the forecast interval for ${city}:`,
     {
       reply_markup: {
         inline_keyboard: [
@@ -32,7 +32,7 @@ bot.on("callback_query", async (callbackQuery) => {
   const chatId = message.chat.id;
 
   try {
-    const forecast = await getWeatherForecast(CITY, interval);
+    const forecast = await getWeatherForecast(city, interval);
     bot.sendMessage(chatId, forecast);
   } catch (error) {
     bot.sendMessage(chatId, `Failed to fetch weather data: ${error.message}`);
@@ -40,7 +40,7 @@ bot.on("callback_query", async (callbackQuery) => {
 });
 
 async function getWeatherForecast(city, interval) {
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${OPENWEATHERMAP_API_KEY}`;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${weatherAPIKey}`;
   const response = await axios.get(url);
   const data = response.data;
   const forecasts = data.list;

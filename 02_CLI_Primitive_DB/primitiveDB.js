@@ -72,15 +72,19 @@ async function findUser() {
     message: "Enter the name of the user to search for:",
   });
 
-  const user = users.find(
-    (u) => u.name.toLowerCase() === searchName.toLowerCase()
+  const matchingUsers = users.filter(
+    (u) => u.name.toLowerCase().trim() === searchName.toLowerCase().trim()
   );
 
-  if (user) {
-    console.log("User found:");
-    console.log(`Name: ${user.name}`);
-    console.log(`Gender: ${user.gender}`);
-    console.log(`Age: ${user.age}`);
+  if (matchingUsers.length > 0) {
+    console.log(`Found ${matchingUsers.length} user(s):`);
+
+    matchingUsers.forEach((u, i) => {
+      console.log(`User ${i + 1}:`);
+      console.log(`Name: ${u.name}`);
+      console.log(`Gender: ${u.gender}`);
+      console.log(`Age: ${u.age}`);
+    });
   } else {
     console.log("User not found.");
   }

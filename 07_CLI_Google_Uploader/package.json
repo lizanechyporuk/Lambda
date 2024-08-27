@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "googleapis": "^142.0.0",
+    "inquirer": "^10.1.8",
+    "node-fetch": "^3.3.2",
+    "readline-sync": "^1.4.10"
+  }
+}

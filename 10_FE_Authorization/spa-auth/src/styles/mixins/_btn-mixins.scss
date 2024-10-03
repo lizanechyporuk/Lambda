@@ -1,0 +1,45 @@
+@use "../main.scss";
+
+@mixin filledBtnSecondary {
+  font-family: var(--font-family);
+  color: var(--primary-text-color);
+  font-weight: var(--fw-regular);
+  border: 2px solid var(--primary-bg-color);
+  border-radius: 64px;
+  background: var(--primary-bg-color);
+  padding: 10px 22px;
+  font-size: 18px;
+  transition: all ease 0.3s;
+  margin-top: 10px;
+
+  &:hover {
+    color: var(--secondary-text-color);
+    background: var(--secondary-bg-color);
+  }
+
+  &:active {
+    transform: translateY(5px);
+  }
+}
+
+@mixin filledBtnPrimary {
+  font-family: var(--font-family);
+  color: var(--secondary-text-color);
+  font-weight: var(--fw-regular);
+  border: 2px solid var(--secondary-bg-color);
+  border-radius: 64px;
+  background: var(--secondary-bg-color);
+  padding: 10px 22px;
+  font-size: 18px;
+  transition: all ease 0.3s;
+  margin-top: 10px;
+
+  &:hover {
+    color: var(--primary-text-color);
+    background: var(--primary-bg-color);
+  }
+
+  &:active {
+    transform: translateY(5px);
+  }
+}

@@ -1,0 +1,11 @@
+@use "styles/mixins/btn-mixins.scss" as btnMixins;
+
+button {
+  &.filledBtnSecondary {
+    @include btnMixins.filledBtnSecondary;
+  }
+
+  &.filledBtnPrimary {
+    @include btnMixins.filledBtnPrimary;
+  }
+}

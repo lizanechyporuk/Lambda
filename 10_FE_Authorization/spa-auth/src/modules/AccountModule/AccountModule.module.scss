@@ -1,0 +1,31 @@
+@use "/src/styles/main.scss";
+@use "/src/styles/mixins/fonts-mixins.scss" as fonts;
+@use "/src/styles/mixins/breakpoints-mixins" as breakpoints;
+
+.header {
+  background: var(--primary-bg-color);
+  text-align: center;
+
+  .header {
+    @include fonts.heading-2-primary;
+    margin: 0;
+    padding: 40px;
+
+    @include breakpoints.for-sm-screen {
+      @include fonts.heading-1-primary;
+    }
+  }
+}
+
+.info {
+  @include fonts.paragraph-18-secondary;
+  margin: 12px 0;
+
+  .email {
+    font-weight: var(--fw-semibold);
+  }
+
+  @include breakpoints.for-md-screen {
+    @include fonts.paragraph-24-secondary;
+  }
+}

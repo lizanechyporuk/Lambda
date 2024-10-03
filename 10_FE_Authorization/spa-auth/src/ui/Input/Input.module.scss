@@ -1,0 +1,17 @@
+@use "src/styles/main.scss";
+@use "src/styles/mixins/fonts-mixins" as fonts;
+
+.formInput {
+  @include fonts.paragraph-16-secondary;
+  padding: 8px 12px;
+  border-radius: 24px;
+  margin-bottom: 10px;
+  border: none;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: var(--secondary-text-color-op-70);
+    opacity: 1;
+    font-weight: var(--fw-regular);
+  }
+}

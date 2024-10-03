@@ -1,0 +1,13 @@
+@use "/src/styles/mixins/fonts-mixins.scss" as fonts;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  width: 100%;
+
+  h3 {
+    @include fonts.heading-3-secondary;
+    margin-bottom: 20px;
+  }
+}
